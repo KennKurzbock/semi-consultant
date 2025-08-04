@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semi-Consultant - Coming Soon</title>
+    <style>
+        /* General Styles and Background */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #fff;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #2c3e50, #3498db, #2c3e50);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            text-align: center;
+        }
 
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            width: 90%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Branding and Messaging */
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 5px;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-top: 0;
+            color: #bdc3c7;
+        }
+
+        .contact-section h3 {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #555;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: #bdc3c7;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .disclaimer, .copyright {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #bdc3c7;
+        }
+
+        .disclaimer a, .copyright a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cookie-banner p {
+            margin: 0;
+        }
+
+        .cookie-banner button {
+            background-color: #2ecc71;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+        }
+
+        .cookie-banner button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>semi-consultant.com</h1>
+            <h2>Launching Soon</h2>
+        </div>
+
+        <div class="contact-section">
+            <h3>Contact Us</h3>
+            <p>Drop us a line! Sign up for our email list for updates, promotions, and more.</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <div class="disclaimer">
+            <p>This site is protected by reCAPTCHA and the Google <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.</p>
+        </div>
+
+        <div class="copyright">
+            <p>Copyright © 2025 semi-consultant.com - All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <div class="cookie-banner">
+        <p>This website uses cookies. We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
+        <button id="accept-cookies">Accept</button>
+    </div>
+
+    <script>
+        document.getElementById('accept-cookies').onclick = function() {
+            document.querySelector('.cookie-banner').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
