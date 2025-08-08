@@ -3,240 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semi-Consultant - Coming Soon</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>Semi-Consultant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* General Styles and Background */
-        body, html {
-            margin: 0;
-            padding: 0;
-            /* Use a more modern and readable font from Google Fonts */
-            font-family: 'Poppins', sans-serif;
-            color: #f0f4f8; /* Lighter off-white for better contrast */
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* A more refined, subtle gradient */
-            background: linear-gradient(135deg, #1a2a3a, #1e3a4e, #1a2a3a);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-            text-align: center;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
         }
-
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Custom smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+            /* This is crucial for sticky headers */
+            scroll-padding-top: 5rem; /* Adjust this value to match your header's height */
         }
-
-        /* Main Container */
-        .container {
-            max-width: 900px;
-            width: 90%;
-            padding: 50px;
-            background: rgba(10, 25, 41, 0.8); /* Darker, slightly blue-tinted overlay */
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px); /* A little more blur for a sleek effect */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
-        }
-
-        /* Branding and Messaging */
-        .header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 5px;
-            font-weight: 700; /* Bold and impactful */
-            color: #e3f2fd; /* Light blue accent */
-        }
-
-        .header h2 {
-            font-size: 1.6rem;
-            font-weight: 300;
-            margin-top: 0;
-            color: #b0bec5; /* A soft, light gray */
-        }
-
-        .contact-section h3 {
-            font-size: 2rem;
-            margin-top: 50px;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #5a9eef; /* A brighter blue for the accent line */
-            padding-bottom: 12px;
-            display: inline-block;
-            font-weight: 600;
-        }
-        
-        .contact-section p {
-            font-weight: 300;
-            font-size: 1.1rem;
-        }
-
-        /* Form Styling */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1rem;
-            font-weight: 400;
-            color: #b0bec5;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #444;
-            background: rgba(255, 255, 255, 0.05); /* Very subtle white tint */
-            color: #e3f2fd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, background 0.3s ease;
-        }
-        
-        .form-group input:focus {
-            border-color: #5a9eef;
-            outline: none;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .form-group input::placeholder {
-            color: #90a4ae;
-        }
-
-        button {
-            background-color: #5a9eef;
-            color: #fff;
-            border: none;
-            padding: 15px 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background-color: #4c8cdb;
-            transform: translateY(-2px); /* Subtle lift effect */
-        }
-        
-        .disclaimer, .copyright {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #90a4ae;
-        }
-
-        .disclaimer a, .copyright a {
-            color: #5a9eef;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .disclaimer a:hover, .copyright a:hover {
-            color: #e3f2fd;
-        }
-
-        /* Cookie Banner */
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 25, 41, 0.95);
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        @media (min-width: 768px) {
-            .cookie-banner {
-                flex-direction: row;
-                gap: 30px;
-            }
-        }
-
-        .cookie-banner p {
-            margin: 0;
-        }
-
-        .cookie-banner button {
-            background-color: #2ecc71;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-radius: 6px;
-        }
-
-        .cookie-banner button:hover {
-            background-color: #27ae60;
-            transform: none;
+        /* Style for active navigation links */
+        .nav-link.active {
+            border-bottom: 2px solid #3b82f6; /* A blue line under the active tab */
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
 
-    <div class="container">
-        <div class="header">
-            <h1>semi-consultant.com</h1>
-            <h2>Launching Soon</h2>
-        </div>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600 mb-4 sm:mb-0">
+                <a href="#home" class="hover:text-blue-800">Semi-Consultant</a>
+            </div>
+            <div class="flex flex-wrap justify-center sm:justify-end gap-x-6 gap-y-2">
+                <a href="#home" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200 py-1">Home</a>
+            </div>
+        </nav>
+    </header>
 
-        <div class="contact-section">
-            <h3>Contact Us</h3>
-            <p>Drop us a line! Sign up for our email list for updates, promotions, and more.</p>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name">
+    <main class="container mx-auto px-4 py-12 space-y-20">
+
+        <section id="home" class="flex flex-col lg:flex-row items-center justify-between gap-12 pt-12">
+            <div class="lg:w-1/2">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                    Semi-Consultant
+                </h1>
+                <p class="mt-2 text-xl font-medium text-blue-600">Consultant for Semiconductors</p>
+                <div class="mt-8 space-y-4">
+                    <div class="p-6 bg-white rounded-lg shadow-md border-l-4 border-blue-500">
+                        <h3 class="text-xl font-semibold text-gray-900">Launching Soon!</h3>
+                        <p class="mt-2 text-gray-600">
+                            Stay tuned
+                        </p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-                <button type="submit">Send</button>
-            </form>
-        </div>
+            </div>
+        </section>
+    
+        <hr class="border-gray-200" />
 
-        <div class="disclaimer">
-            <p>This site is protected by reCAPTCHA and the Google <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.</p>
-        </div>
+        <section id="profile" class="pt-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-8 text-center">Profile</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <p class="text-lg text-gray-700 mb-4">
+                    &#128075; Let's connect and explore how I can help turn challenges &#129513; into opportunities &#127793;.
+                </p>
+            </div>
+        </section>
 
-        <div class="copyright">
-            <p>Copyright © 2025 semi-consultant.com - All Rights Reserved.</p>
-        </div>
-    </div>
+        <hr class="border-gray-200" />
 
-    <div class="cookie-banner">
-        <p>This website uses cookies. We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-        <button id="accept-cookies">Accept</button>
-    </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-6 mt-12">
+        <p>&copy; 2025 Semi-Consultant. All rights reserved.</p>
+    </footer>
 
     <script>
-        document.getElementById('accept-cookies').onclick = function() {
-            document.querySelector('.cookie-banner').style.display = 'none';
-        }
-    </script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const header = document.querySelector('header');
 
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const headerHeight = header.offsetHeight;
+            const scrollYAdjusted = window.pageYOffset + headerHeight;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollYAdjusted >= sectionTop && scrollYAdjusted < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Correct the home link active state on load
+            const homeLink = document.querySelector('.nav-link[href="#home"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
