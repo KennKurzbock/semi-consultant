@@ -9,10 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    html { scroll-behavior: smooth; }
     body {
       font-family: "Poppins", sans-serif;
       background-color: #f0f4f8;
       color: #334155;
+      scroll-padding-top: 1rem;
     }
 
     .container { max-width: 1200px; }
@@ -22,22 +24,18 @@
     .card {
       background-color: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      transform: scale(0.97);
-      opacity: 0;
-      transition: all 0.5s ease-out;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       overflow: hidden;
       position: relative;
       perspective: 1000px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .card.animate { transform: scale(1); opacity: 1; }
-    .card-content { transform: translateY(10px); opacity: 0; transition: transform 0.4s ease-out, opacity 0.4s ease-out; }
-    .card:hover .card-content { transform: translateY(0); opacity: 1; }
-    .hover-zoom img { transition: transform 0.5s ease; }
-    .hover-zoom:hover img { transform: scale(1.05); }
-    .tilt-card { transition: transform 0.2s ease-out; transform-style: preserve-3d; }
-    .tilt-card:hover { cursor: pointer; }
+    /* Tilt + shadow hover */
+    .card:hover {
+      transform: scale(1.03) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
 
     .border-accent { border-color: #2563eb; }
     .text-accent { color: #2563eb; }
@@ -52,18 +50,12 @@
     }
     .button-primary:hover { background-color: #1e40af; }
 
-    .fade-zoom {
-      opacity: 0;
-      transform: scale(0.95) translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    }
-    .fade-zoom.animate { opacity: 1; transform: scale(1) translateY(0); }
+    /* Hover zoom for images */
+    .hover-zoom img { transition: transform 0.5s ease; }
+    .hover-zoom:hover img { transform: scale(1.05); }
 
     /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .card { margin-bottom: 1.5rem; }
-      .section-title { font-size: 1.75rem; }
-    }
+    @media (max-width: 768px) { .card { margin-bottom: 1.5rem; } }
 
     /* Parallax Header Full-Screen */
     .parallax-header {
@@ -76,12 +68,12 @@
       width: 100%;
       height: 100vh;
       overflow: hidden;
+      scroll-snap-align: start;
     }
     .parallax-overlay {
       position: absolute;
       top:0; left:0; right:0; bottom:0;
       background: rgba(15,23,42,0.6);
-      transition: transform 0.2s ease-out;
     }
     .parallax-content {
       position: relative;
@@ -103,30 +95,11 @@
       text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
       color: white;
     }
+    .company-subtitle { max-width: 900px; font-weight: 300; margin-top: 1rem; color: white; }
 
-    .company-subtitle {
-      max-width: 900px;
-      font-weight: 300;
-      margin-top: 1rem;
-      color: white;
-    }
-
-    /* Responsive font sizes and spacing */
-    @media (max-width: 640px) {
-      .company-name { font-size: 2.5rem; }
-      .company-subtitle { font-size: 1rem; }
-      main { padding-top: 2rem; }
-    }
-    @media (min-width: 641px) and (max-width: 1024px) {
-      .company-name { font-size: 3.5rem; }
-      .company-subtitle { font-size: 1.2rem; }
-      main { padding-top: 3rem; }
-    }
-    @media (min-width: 1025px) {
-      .company-name { font-size: 5rem; }
-      .company-subtitle { font-size: 1.25rem; }
-      main { padding-top: 4rem; }
-    }
+    @media (max-width: 640px) { .company-name { font-size: 2.5rem; } .company-subtitle { font-size: 1rem; } }
+    @media (min-width: 641px) and (max-width: 1024px) { .company-name { font-size: 3.5rem; } .company-subtitle { font-size: 1.2rem; } }
+    @media (min-width: 1025px) { .company-name { font-size: 5rem; } .company-subtitle { font-size: 1.25rem; } }
 
     /* Footer same as header */
     footer {
@@ -137,23 +110,20 @@
       text-align: center;
       padding: 4rem 1rem;
       position: relative;
+      scroll-snap-align: start;
     }
-    footer .overlay {
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      background: rgba(15,23,42,0.85);
-      z-index: 1;
-    }
+    footer .overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(15,23,42,0.85); z-index: 1; }
     footer .content { position: relative; z-index: 10; }
+
   </style>
 </head>
 
 <body class="selection:bg-blue-200 selection:text-blue-800">
 
   <!-- Parallax Header -->
-  <header class="parallax-header fade-zoom">
-    <div class="parallax-overlay" id="parallaxOverlay"></div>
-    <div class="parallax-content" id="parallaxContent">
+  <header class="parallax-header">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content">
       <h1 class="company-name">SEMI-CONSULTANT PTE. LTD.</h1>
       <p class="company-subtitle">
         Your Trusted Partner for Independent Semiconductor Facility Audits & Consulting
@@ -162,102 +132,68 @@
   </header>
 
   <main class="container mx-auto px-4 sm:px-6 lg:px-20 py-16 space-y-16">
-    <!-- What We Do Section -->
+
+    <!-- What We Do -->
     <section id="who-i-am" class="text-center space-y-8 hover-zoom">
-      <h2 class="text-3xl sm:text-4xl section-title fade-zoom">What We Do</h2>
-      <div class="card tilt-card p-8 max-w-3xl mx-auto fade-zoom">
-        <div class="card-content">
-          <p class="text-xl leading-relaxed">
-            We provide independent oversight for semiconductor facility projects, ensuring they are delivered on time, on budget, and compliant with the world’s most demanding safety and quality standards.
-          </p>
-          <p class="mt-6 text-xl leading-relaxed font-semibold text-accent">
-            Our focus? Safety, cost control, schedule adherence, and quality assurance — across every project phase.
-          </p>
-        </div>
+      <h2 class="text-3xl sm:text-4xl section-title">What We Do</h2>
+      <div class="card p-8 max-w-3xl mx-auto">
+        <p class="text-xl leading-relaxed">
+          We provide independent oversight for semiconductor facility projects, ensuring they are delivered on time, on budget, and compliant with the world’s most demanding safety and quality standards.
+        </p>
+        <p class="mt-6 text-xl leading-relaxed font-semibold text-accent">
+          Our focus? Safety, cost control, schedule adherence, and quality assurance — across every project phase.
+        </p>
       </div>
     </section>
 
     <hr class="border-gray-200" />
 
-    <!-- Core Competencies -->
+    <!-- Our Expertise at a Glance -->
     <section id="core-competencies">
-      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10 fade-zoom">Our Expertise at a Glance</h2>
+      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">Our Expertise at a Glance</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Design Audits Card -->
-        <div class="card tilt-card p-6 border-l-4 border-accent fade-zoom hover-zoom">
-          <img src="https://via.placeholder.com/400x250?text=Design+Audits" alt="Design Audits" class="rounded-lg mb-4 w-full h-48 object-cover">
-          <div class="card-content">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-              <span class="mr-3 text-accent">&#x2705;</span> Design Audits
-            </h3>
-            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
-              <li>Structured feasibility and design audits for early risk detection</li>
-              <li>Compliance validation against SEMI, IBC, FM Global, and local codes</li>
-              <li>Constructability and system integration reviews</li>
-              <li>Construction audits covering safety, quality, and schedule performance</li>
-            </ul>
-          </div>
+
+        <!-- Design Audits -->
+        <div class="card p-6 border-l-4 border-accent hover-zoom" data-tilt>
+          <img loading="lazy" src="https://via.placeholder.com/400x250?text=Design+Audits" alt="Design Audits" class="rounded-lg mb-4 w-full h-48 object-cover">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2 flex items-center">
+            <span class="mr-3 text-accent">&#x2705;</span> Design Audits
+          </h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+            <li>Structured feasibility and design audits for early risk detection</li>
+            <li>Compliance validation against SEMI, IBC, FM Global, and local codes</li>
+            <li>Constructability and system integration reviews</li>
+            <li>Construction audits covering safety, quality, and schedule</li>
+          </ul>
         </div>
 
-        <!-- Feasibility & Design Auditing Card -->
-        <div class="card tilt-card p-6 border-l-4 border-accent fade-zoom hover-zoom">
-          <img src="https://via.placeholder.com/400x250?text=Feasibility+%26+Design" alt="Feasibility & Design" class="rounded-lg mb-4 w-full h-48 object-cover">
-          <div class="card-content">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-              <span class="mr-3 text-accent">&#x1F4CB;</span> Feasibility & Design Auditing
-            </h3>
-            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
-              <li>Site master planning</li>
-              <li>Comprehensive evaluation of site requirements and project feasibility</li>
-              <li>Optimization of logistics flows</li>
-              <li>Mechanical, electrical, CSA, process, controls, and life safety</li>
-              <li>Cleanroom classification, temperature & humidity requirements</li>
-            </ul>
-          </div>
+        <!-- Feasibility & Design Auditing -->
+        <div class="card p-6 border-l-4 border-accent hover-zoom" data-tilt>
+          <img loading="lazy" src="https://via.placeholder.com/400x250?text=Feasibility+%26+Design" alt="Feasibility & Design" class="rounded-lg mb-4 w-full h-48 object-cover">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2 flex items-center">
+            <span class="mr-3 text-accent">&#x1F4CB;</span> Feasibility & Design Auditing
+          </h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+            <li>Site master planning</li>
+            <li>Comprehensive evaluation of site requirements and project feasibility</li>
+            <li>Optimization of logistics flows</li>
+            <li>Mechanical, electrical, CSA, process, controls, and life safety</li>
+            <li>Cleanroom classification, temperature & humidity requirements</li>
+          </ul>
         </div>
 
-        <!-- Construction Oversight Card -->
-        <div class="card tilt-card p-6 border-l-4 border-accent fade-zoom hover-zoom">
-          <img src="https://via.placeholder.com/400x250?text=Construction+Oversight" alt="Construction Oversight" class="rounded-lg mb-4 w-full h-48 object-cover">
-          <div class="card-content">
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-              <span class="mr-3 text-accent">&#x1F527;</span> Construction Oversight and Project Control Audits
-            </h3>
-            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
-              <li>On-site auditing for safety, schedule, cost, and quality</li>
-              <li>Verification of supply chain setup, procurement, logistics, and installation</li>
-            </ul>
-          </div>
+        <!-- Construction Oversight -->
+        <div class="card p-6 border-l-4 border-accent hover-zoom" data-tilt>
+          <img loading="lazy" src="https://via.placeholder.com/400x250?text=Construction+Oversight" alt="Construction Oversight" class="rounded-lg mb-4 w-full h-48 object-cover">
+          <h3 class="text-2xl font-semibold text-gray-900 mb-2 flex items-center">
+            <span class="mr-3 text-accent">&#x1F527;</span> Construction Oversight and Project Control Audits
+          </h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+            <li>On-site auditing for safety, schedule, cost, and quality</li>
+            <li>Verification of supply chain setup, procurement, logistics, and installation</li>
+          </ul>
         </div>
-      </div>
-    </section>
 
-    <hr class="border-gray-200" />
-
-    <!-- Value Delivered -->
-    <section id="value-delivered">
-      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10 fade-zoom">Value Delivered</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="card p-6 text-center flex flex-col items-center tilt-card hover-zoom fade-zoom">
-          <span class="text-5xl mb-4">🛡️</span>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Reduce Risk</h3>
-          <p class="text-gray-700">Identify issues early, prevent rework and costly changes</p>
-        </div>
-        <div class="card p-6 text-center flex flex-col items-center tilt-card hover-zoom fade-zoom">
-          <span class="text-5xl mb-4">💰</span>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Save Costs</h3>
-          <p class="text-gray-700">Structured oversight of design, procurement, installation through regular audits</p>
-        </div>
-        <div class="card p-6 text-center flex flex-col items-center tilt-card hover-zoom fade-zoom">
-          <span class="text-5xl mb-4">✅</span>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Ensure Compliance</h3>
-          <p class="text-gray-700">Guaranteed adherence to the most demanding safety and quality standards</p>
-        </div>
-        <div class="card p-6 text-center flex flex-col items-center tilt-card hover-zoom fade-zoom">
-          <span class="text-5xl mb-4">🔒</span>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Protect Investments</h3>
-          <p class="text-gray-700">Independent validation builds confidence for owners, investors, and EPCM contractors</p>
-        </div>
       </div>
     </section>
 
@@ -265,22 +201,20 @@
 
     <!-- Engagement Snapshot -->
     <section id="engagement-snapshot">
-      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10 fade-zoom">Engagement Snapshot</h2>
-      <div class="card p-8 max-w-3xl mx-auto tilt-card hover-zoom fade-zoom">
-        <ul class="list-none text-xl text-gray-700 space-y-6 card-content">
-          <li class="flex items-start">
-            <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-            <p>Independent audits of <span class="font-bold text-gray-900">$10M to $5B+</span> semiconductor FAB projects</p>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-            <p>Experience across <span class="font-bold text-gray-900">greenfield fabs, expansions, and retrofits</span>.</p>
-          </li>
-          <li class="flex items-start">
-            <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-            <p><span class="font-bold text-gray-900">Trusted advisor</span> to owners, investors, and EPCM teams</p>
-          </li>
-        </ul>
+      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">Engagement Snapshot</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card p-6 hover-zoom" data-tilt>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Independent audits</h3>
+          <p class="text-gray-700">$10M to $5B+ semiconductor FAB projects</p>
+        </div>
+        <div class="card p-6 hover-zoom" data-tilt>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Experience</h3>
+          <p class="text-gray-700">Greenfield fabs, expansions, and retrofits</p>
+        </div>
+        <div class="card p-6 hover-zoom" data-tilt>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Trusted Advisor</h3>
+          <p class="text-gray-700">Support for owners, investors, and EPCM teams</p>
+        </div>
       </div>
     </section>
 
@@ -309,28 +243,8 @@
   </footer>
 
   <script>
-    // Scroll animations
-    const elements = document.querySelectorAll(".fade-zoom");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("animate");
-      });
-    }, { threshold: 0.1 });
-    elements.forEach(el => observer.observe(el));
-
-    // Parallax header scroll
-    const header = document.querySelector(".parallax-header");
-    const overlay = document.getElementById("parallaxOverlay");
-    const content = document.getElementById("parallaxContent");
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
-      header.style.backgroundPositionY = `${scrollY * 0.5}px`;
-      overlay.style.transform = `translateY(${scrollY * 0.2}px)`;
-      content.style.transform = `translateY(${scrollY * 0.15}px)`;
-    });
-
-    // Tilt effect for cards
-    const tiltCards = document.querySelectorAll('.tilt-card');
+    // Tilt effect for all cards
+    const tiltCards = document.querySelectorAll('.card[data-tilt]');
     tiltCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -340,10 +254,12 @@
         const centerY = rect.height/2;
         const rotateX = ((y - centerY)/centerY)*5;
         const rotateY = ((x - centerX)/centerX)*5;
-        card.style.transform = `scale(1) rotateX(${ -rotateX }deg) rotateY(${ rotateY }deg)`;
+        card.style.setProperty('--rotateX', -rotateX+'deg');
+        card.style.setProperty('--rotateY', rotateY+'deg');
       });
       card.addEventListener('mouseleave', () => {
-        card.style.transform = 'scale(1) rotateX(0) rotateY(0)';
+        card.style.setProperty('--rotateX', '0deg');
+        card.style.setProperty('--rotateY', '0deg');
       });
     });
   </script>
