@@ -101,36 +101,7 @@
     @media (min-width: 641px) and (max-width: 1024px) { .company-name { font-size: 3.5rem; } .company-subtitle { font-size: 1.2rem; } }
     @media (min-width: 1025px) { .company-name { font-size: 5rem; } .company-subtitle { font-size: 1.25rem; } }
 
-/* Footer styled as a fixed bottom banner */
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  background: url('https://images.unsplash.com/photo-1669101283516-e608dcf142df?auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
-  padding: 4rem 1rem;
-  scroll-snap-align: start;
-  z-index: 1000;
-  overflow: hidden;
-}
-footer .overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(15, 23, 42, 0.85);
-  z-index: 1;
-}
-footer .content {
-  position: relative;
-  z-index: 10;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
+/* Footer same as header */ footer { background: url('https://images.unsplash.com/photo-1669101283516-e608dcf142df?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; color: white; text-align: center; padding: 4rem 1rem; position: relative; scroll-snap-align: start; } footer .overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(15,23,42,0.85); z-index: 1; } footer .content { position: relative; z-index: 10; } </style> </head>
 
   <!-- Parallax Header -->
   <header class="parallax-header">
