@@ -7,42 +7,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Light Mode Styling */
         :root {
-            --color-primary: #0077ff; /* Electric Blue/Accent */
-            --color-secondary: #0a1128; /* Deep Navy/Background */
-            --color-text-light: #f1f5f9; /* Light Text */
-            --color-text-fade: #94a3b8; /* Faded Text */
+            --color-primary: #1e3a8a; /* Deep Blue Accent */
+            --color-secondary: #f0f4f8; /* Light Blue-Gray Background */
+            --color-text-dark: #334155; /* Dark Text */
+            --color-text-light: #ffffff; /* White Text */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--color-secondary);
-            color: var(--color-text-light);
+            background-color: var(--color-secondary); /* Light Background */
+            color: var(--color-text-dark); 
         }
 
         .container {
-            max-width: 1300px; /* Slightly wider */
+            max-width: 1300px; 
         }
 
         .section-title {
-            color: var(--color-text-light);
+            color: var(--color-primary);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
 
         .card {
-            background-color: #1a2238; /* Slightly lighter dark background for cards */
+            background-color: var(--color-text-light); /* White card background */
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 119, 255, 0.1); /* Subtle border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0; /* Subtle border */
             transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 30px rgba(0, 119, 255, 0.2);
-            border-color: var(--color-primary); /* Accent border on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
         }
 
         .text-accent {
@@ -50,145 +50,144 @@
         }
 
         .bg-gradient-header {
-            background: radial-gradient(circle at top left, #1a2238, #0a1128); /* Dark, subtle radial gradient */
-            border-bottom: 2px solid var(--color-primary);
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a); /* Deep Blue Gradient for Header/Footer */
+            color: var(--color-text-light);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .button-primary {
-            background: linear-gradient(90deg, #0056e6, #0077ff); /* Vibrant gradient button */
+            background-color: #2563eb;
             color: white;
-            padding: 14px 30px;
-            border-radius: 6px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 119, 255, 0.4);
-            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
         }
-
         .button-primary:hover {
-            background: linear-gradient(90deg, #0077ff, #0099ff);
-            box-shadow: 0 4px 20px rgba(0, 119, 255, 0.6);
-            transform: scale(1.02);
+            background-color: #1e40af;
         }
     </style>
 </head>
-<body class="selection:bg-blue-600 selection:text-white">
+<body class="selection:bg-blue-200 selection:text-blue-800">
 
-    <header class="bg-gradient-header py-24 text-center">
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-4 text-white">
+    <header class="bg-gradient-header py-20 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 text-white">
             SEMI-CONSULTANT PTE. LTD.
         </h1>
-        <p class="text-xl sm:text-2xl font-light text-gray-400 max-w-4xl mx-auto px-4">
-            **Your Trusted Partner for Independent Semiconductor Facility Audits & Consulting**
+        <p class="text-xl sm:text-2xl font-light text-blue-100 max-w-4xl mx-auto px-4">
+            Your Trusted Partner for Independent Semiconductor Facility Audits & Consulting
         </p>
-        <div class="mt-10">
-            <a href="#contact" class="button-primary inline-block">
-                Start Your Audit Consultation
-            </a>
-        </div>
     </header>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
 
+        <section id="hero-image" class="relative max-w-6xl mx-auto shadow-xl rounded-xl overflow-hidden">
+            <img src="https://via.placeholder.com/1200x450/3b82f6/ffffff?text=High-Tech+FAB+Facility+Oversight" 
+                 alt="Placeholder image representing a high-tech semiconductor cleanroom or facility." 
+                 class="w-full h-auto object-cover"/>
+            <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 p-4 text-white w-full">
+                <p class="text-lg font-medium">Ensuring precision in every aspect of facility development.</p>
+            </div>
+        </section>
+
         <section id="what-we-do" class="text-center">
-            <h2 class="text-4xl sm:text-5xl section-title mb-12">Expert Oversight for High-Tech Facilities</h2>
-            <div class="card p-10 max-w-4xl mx-auto border-t-4 border-accent">
-                <p class="text-2xl leading-relaxed text-gray-300">
+            <h2 class="text-3xl sm:text-4xl section-title mb-10">Expert Oversight for High-Tech Facilities</h2>
+            <div class="card p-8 max-w-4xl mx-auto border-t-4 border-blue-500">
+                <p class="text-xl leading-relaxed text-gray-700">
                     We provide **independent oversight** for complex semiconductor facility projects, ensuring they are delivered on time, on budget, and **compliant with the world’s most demanding safety and quality standards**.
                 </p>
-                <p class="mt-8 text-2xl leading-relaxed font-bold text-accent">
+                <p class="mt-6 text-xl leading-relaxed font-bold text-accent">
                     Our focus: Safety, Cost Control, Schedule Adherence, and Quality Assurance — across every project phase.
                 </p>
             </div>
         </section>
 
-        <hr class="border-gray-800" />
+        <hr class="border-gray-300" />
 
         <section id="core-competencies">
-            <h2 class="text-4xl sm:text-5xl section-title text-center mb-16">Our Specialized Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <h2 class="text-3xl sm:text-4xl section-title text-center mb-12">Our Specialized Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="card p-8 border-t-4 border-accent">
-                    <h3 class="text-2xl font-semibold text-accent mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">⚙️</span> Design Audits
+                <div class="card p-6 border-l-4 border-accent">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <span class="mr-3 text-accent text-3xl">&#x2705;</span> Design Audits
                     </h3>
-                    <ul class="list-none text-lg text-gray-400 space-y-3">
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Structured Feasibility, Programming, 30%–60%–90% design audits for early risk detection</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Compliance validation against SEMI, IBC, FM Global, and local codes</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Review of layouts, system integration, and overall constructability</li>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 pl-4">
+                        <li>Structured Feasibility, Programming, 30%–60%–90% design audits for early risk detection</li>
+                        <li>Compliance validation against SEMI, IBC, FM Global, and local codes</li>
+                        <li>Review of layouts, system integration, and overall constructability</li>
                     </ul>
                 </div>
                 
-                <div class="card p-8 border-t-4 border-accent">
-                    <h3 class="text-2xl font-semibold text-accent mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">🔬</span> Feasibility & Design Auditing
+                <div class="card p-6 border-l-4 border-accent">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <span class="mr-3 text-accent text-3xl">&#x1F4CB;</span> Feasibility & Design Auditing
                     </h3>
-                    <ul class="list-none text-lg text-gray-400 space-y-3">
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Comprehensive evaluation of site requirements and project feasibility</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Optimization of all logistics flows (people, goods, materials, vehicles)</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Audits of Mechanical, Electrical, CSA, Process, Controls, and Life Safety Systems</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Cleanroom classification, temperature & humidity requirements</li>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 pl-4">
+                        <li>Comprehensive evaluation of site requirements and project feasibility</li>
+                        <li>Optimization of all logistics flows (people, goods, materials, vehicles)</li>
+                        <li>Audits of Mechanical, Electrical, CSA, Process, Controls, and Life Safety Systems</li>
+                        <li>Cleanroom classification, temperature & humidity requirements</li>
                     </ul>
                 </div>
                 
-                <div class="card p-8 border-t-4 border-accent">
-                    <h3 class="text-2xl font-semibold text-accent mb-4 flex items-center">
-                        <span class="mr-3 text-3xl">🛠️</span> Construction Oversight
+                <div class="card p-6 border-l-4 border-accent">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
+                        <span class="mr-3 text-accent text-3xl">&#x1F527;</span> Construction Oversight
                     </h3>
-                    <ul class="list-none text-lg text-gray-400 space-y-3">
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> On-site auditing for safety, schedule, cost, and quality assurance</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> Verification of supply chain setup, procurement, logistics, and installation compliance</li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10148;</span> CAPA (Corrective and Preventive Action) reports and Cost vs. Progress analysis</li>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 pl-4">
+                        <li>On-site auditing for safety, schedule, cost, and quality assurance</li>
+                        <li>Verification of supply chain setup, procurement, logistics, and installation compliance</li>
+                        <li>CAPA (Corrective and Preventive Action) reports and Cost vs. Progress analysis</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <hr class="border-gray-800" />
+        <hr class="border-gray-300" />
 
         <section id="value-delivered">
-            <h2 class="text-4xl sm:text-5xl section-title text-center mb-16">The Value of Independent Oversight</h2>
+            <h2 class="text-3xl sm:text-4xl section-title text-center mb-12">The Value of Independent Oversight</h2>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="card p-8 text-center flex flex-col items-center">
+                <div class="card p-6 text-center flex flex-col items-center">
                     <span class="text-5xl mb-4 text-accent">🛡️</span>
-                    <h3 class="text-xl font-semibold text-white mb-2">Mitigate Risk</h3>
-                    <p class="text-gray-400">Identify issues early, prevent costly rework and unforeseen delays.</p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Mitigate Risk</h3>
+                    <p class="text-gray-700">Identify issues early, prevent costly rework and unforeseen delays.</p>
                 </div>
-                <div class="card p-8 text-center flex flex-col items-center">
+                <div class="card p-6 text-center flex flex-col items-center">
                     <span class="text-5xl mb-4 text-accent">💰</span>
-                    <h3 class="text-xl font-semibold text-white mb-2">Optimize Costs</h3>
-                    <p class="text-gray-400">Structured oversight of design, procurement, and installation processes.</p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Optimize Costs</h3>
+                    <p class="text-gray-700">Structured oversight of design, procurement, and installation processes.</p>
                 </div>
-                <div class="card p-8 text-center flex flex-col items-center">
+                <div class="card p-6 text-center flex flex-col items-center">
                     <span class="text-5xl mb-4 text-accent">✅</span>
-                    <h3 class="text-xl font-semibold text-white mb-2">Ensure Compliance</h3>
-                    <p class="text-gray-400">Guaranteed adherence to the highest safety and quality standards.</p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Ensure Compliance</h3>
+                    <p class="text-gray-700">Guaranteed adherence to the highest safety and quality standards.</p>
                 </div>
-                <div class="card p-8 text-center flex flex-col items-center">
+                <div class="card p-6 text-center flex flex-col items-center">
                     <span class="text-5xl mb-4 text-accent">🔒</span>
-                    <h3 class="text-xl font-semibold text-white mb-2">Protect Investments</h3>
-                    <p class="text-gray-400">Independent validation builds confidence for all stakeholders.</p>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Protect Investments</h3>
+                    <p class="text-gray-700">Independent validation builds confidence for all stakeholders.</p>
                 </div>
             </div>
         </section>
 
-        <hr class="border-gray-800" />
+        <hr class="border-gray-300" />
 
         <section id="engagement-snapshot">
-            <h2 class="text-4xl sm:text-5xl section-title text-center mb-16">Project Impact & Experience</h2>
-            <div class="card p-12 max-w-4xl mx-auto">
-                <ul class="list-none text-xl text-gray-300 space-y-8">
+            <h2 class="text-3xl sm:text-4xl section-title text-center mb-12">Project Impact & Experience</h2>
+            <div class="card p-8 max-w-4xl mx-auto">
+                <ul class="list-none text-xl text-gray-700 space-y-6">
                     <li class="flex items-start">
-                        <span class="text-accent mr-4 text-3xl mt-0.5">&#x2699;</span>
-                        <p>Audited <span class="font-extrabold text-white text-2xl">$10M to $5B+</span> semiconductor FAB projects, covering greenfield fabs, expansions, and retrofits.</p>
+                        <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
+                        <p>Audited <span class="font-bold text-gray-900">$10M to $5B+</span> semiconductor FAB projects, covering greenfield fabs, expansions, and retrofits.</p>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-accent mr-4 text-3xl mt-0.5">&#x1F30E;</span>
-                        <p>Providing independent auditing and advisory services to <span class="font-extrabold text-white text-2xl">global clients</span> and multinational EPCM teams.</p>
+                        <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
+                        <p>Providing independent auditing and advisory services to <span class="font-bold text-gray-900">global clients</span> and multinational EPCM teams.</p>
                     </li>
                     <li class="flex items-start">
-                        <span class="text-accent mr-4 text-3xl mt-0.5">&#x1F4BC;</span>
+                        <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
                         <p>A trusted advisor focused on achieving the highest standards of safety, quality, and **schedule adherence**.</p>
                     </li>
                 </ul>
@@ -197,25 +196,24 @@
         
     </main>
 
-    <footer id="contact" class="bg-[#1a2238] text-white text-center p-12 mt-20 border-t-2 border-accent">
+    <footer id="contact" class="bg-gradient-header text-white text-center p-12 mt-20">
         <div class="container mx-auto px-4">
-            <p class="text-2xl sm:text-3xl font-light mb-6">
-                Let's connect and ensure your next project is a **resounding success**!
+            <p class="text-lg sm:text-xl font-light mb-4">
+                Let's connect and ensure your next project is a resounding success!
             </p>
-            <p class="text-xl sm:text-2xl font-semibold mb-6 text-gray-300">
-                📍 Based in Singapore | 🌍 Supporting projects worldwide
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-10 mt-8">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mt-6">
                 <a href="mailto:hkurzboeck@outlook.com" class="button-primary flex items-center">
-                    <span class="mr-2 text-2xl">&#x2709;&#xFE0F;</span> Email Us
+                    <span class="mr-2">&#x2709;&#xFE0F;</span> hkurzboeck@outlook.com
                 </a>
                 <a href="tel:+6596175830" class="button-primary flex items-center">
-                    <span class="mr-2 text-2xl">&#x260E;&#xFE0F;</span> Call Now
+                    <span class="mr-2">&#x260E;&#xFE0F;</span> +65 9617 5830
                 </a>
             </div>
         </div>
-        <p class="mt-12 text-sm text-gray-500">&copy; 2024 SEMI-CONSULTANT PTE. LTD. All rights reserved.</p>
+        <p class="mt-8 text-sm opacity-80">&copy; 2024 SEMI-CONSULTANT PTE. LTD. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
+
+Would you like me to adjust the colors or content of the placeholder image?
