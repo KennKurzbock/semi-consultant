@@ -5,56 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEMI-CONSULTANT PTE. LTD. - Expert Semiconductor Facility Audits</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Light Mode Styling */
-        :root {
-            --color-primary: #1e3a8a; /* Deep Blue Accent */
-            --color-secondary: #f0f4f8; /* Light Blue-Gray Background */
-            --color-text-dark: #334155; /* Dark Text */
-            --color-text-light: #ffffff; /* White Text */
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--color-secondary); /* Light Background */
-            color: var(--color-text-dark); 
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #334155; /* Darker text for readability */
         }
-
         .container {
-            max-width: 1300px; 
+            max-width: 1200px;
         }
-
         .section-title {
-            color: var(--color-primary);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            color: #1e3a8a; /* Darker blue for titles */
+            font-weight: 700;
         }
-
         .card {
-            background-color: var(--color-text-light); /* White card background */
+            background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2e8f0; /* Subtle border */
             transition: all 0.3s ease;
         }
-
         .card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px);
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
         }
-
+        .border-accent {
+            border-color: #2563eb; /* A nice blue accent */
+        }
         .text-accent {
-            color: var(--color-primary);
+            color: #2563eb;
         }
-
         .bg-gradient-header {
-            background: linear-gradient(135deg, #3b82f6, #1e3a8a); /* Deep Blue Gradient for Header/Footer */
-            color: var(--color-text-light);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #3b82f6, #60a5fa); /* Blue gradient for header */
+            color: white;
         }
-
         .button-primary {
             background-color: #2563eb;
             color: white;
@@ -70,136 +54,131 @@
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-800">
 
-    <header class="bg-gradient-header py-20 text-center">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 text-white">
+    <div class="bg-gradient-header py-16 text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 animate-fade-in-down">
             SEMI-CONSULTANT PTE. LTD.
         </h1>
-        <p class="text-xl sm:text-2xl font-light text-blue-100 max-w-4xl mx-auto px-4">
+        <p class="text-xl sm:text-2xl font-light opacity-90 animate-fade-in-up">
             Your Trusted Partner for Independent Semiconductor Facility Audits & Consulting
         </p>
-    </header>
+    </div>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-24">
+    <main class="container mx-auto px-4 sm:px-6 lg:px-20 py-16 space-y-16">
 
-        <section id="hero-image" class="relative max-w-6xl mx-auto shadow-xl rounded-xl overflow-hidden">
-            <img src="https://via.placeholder.com/1200x450/3b82f6/ffffff?text=High-Tech+FAB+Facility+Oversight" 
-                 alt="Placeholder image representing a high-tech semiconductor cleanroom or facility." 
-                 class="w-full h-auto object-cover"/>
-            <div class="absolute bottom-0 left-0 bg-black bg-opacity-50 p-4 text-white w-full">
-                <p class="text-lg font-medium">Ensuring precision in every aspect of facility development.</p>
-            </div>
-        </section>
-
-        <section id="what-we-do" class="text-center">
-            <h2 class="text-3xl sm:text-4xl section-title mb-10">Expert Oversight for High-Tech Facilities</h2>
-            <div class="card p-8 max-w-4xl mx-auto border-t-4 border-blue-500">
-                <p class="text-xl leading-relaxed text-gray-700">
-                    We provide **independent oversight** for complex semiconductor facility projects, ensuring they are delivered on time, on budget, and **compliant with the world’s most demanding safety and quality standards**.
+        <section id="who-i-am" class="text-center">
+            <h2 class="text-3xl sm:text-4xl section-title mb-8">What We Do</h2>
+            <div class="card p-8 max-w-3xl mx-auto">
+                <p class="text-xl leading-relaxed">
+                    We provide independent oversight for semiconductor facility projects, ensuring they are delivered on time, on budget, and compliant with the world’s most demanding safety and quality standards. 
                 </p>
-                <p class="mt-6 text-xl leading-relaxed font-bold text-accent">
-                    Our focus: Safety, Cost Control, Schedule Adherence, and Quality Assurance — across every project phase.
+                <p class="mt-6 text-xl leading-relaxed font-semibold text-accent">
+                    Our focus? Safety, cost control, schedule adherence, and quality assurance — across every project phase.
                 </p>
             </div>
+             <div class="mt-10 flex justify-center">
+                
+             </div>
         </section>
 
-        <hr class="border-gray-300" />
+        <hr class="border-gray-200" />
 
         <section id="core-competencies">
-            <h2 class="text-3xl sm:text-4xl section-title text-center mb-12">Our Specialized Expertise</h2>
+            <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">Our Expertise at a Glance</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
                 <div class="card p-6 border-l-4 border-accent">
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-                        <span class="mr-3 text-accent text-3xl">&#x2705;</span> Design Audits
+                        <span class="mr-3 text-accent">&#x2705;</span> Design Audits
                     </h3>
-                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 pl-4">
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
                         <li>Structured Feasibility, Programming, 30%–60%–90% design audits for early risk detection</li>
                         <li>Compliance validation against SEMI, IBC, FM Global, and local codes</li>
-                        <li>Review of layouts, system integration, and overall constructability</li>
+                        <li>Review of  layouts, system integration, and overall constructability</li>
+                        <li>Construction audits covering safety, quality, schedule, with CAPA reports and cost vs progress analysis</li>
                     </ul>
                 </div>
-                
                 <div class="card p-6 border-l-4 border-accent">
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-                        <span class="mr-3 text-accent text-3xl">&#x1F4CB;</span> Feasibility & Design Auditing
+                        <span class="mr-3 text-accent">&#x1F4CB;</span> Feasibility & Design Auditing
                     </h3>
-                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 pl-4">
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>Site master planning</li>
                         <li>Comprehensive evaluation of site requirements and project feasibility</li>
                         <li>Optimization of all logistics flows (people, goods, materials, vehicles)</li>
-                        <li>Audits of Mechanical, Electrical, CSA, Process, Controls, and Life Safety Systems</li>
+                        <li>Mechanical, electrical, CSA, process, controls, and life safety</li>
                         <li>Cleanroom classification, temperature & humidity requirements</li>
                     </ul>
                 </div>
-                
                 <div class="card p-6 border-l-4 border-accent">
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
-                        <span class="mr-3 text-accent text-3xl">&#x1F527;</span> Construction Oversight
+                        <span class="mr-3 text-accent">&#x1F527;</span> Construction Oversight and Project Control Audits
                     </h3>
-                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2 pl-4">
-                        <li>On-site auditing for safety, schedule, cost, and quality assurance</li>
-                        <li>Verification of supply chain setup, procurement, logistics, and installation compliance</li>
-                        <li>CAPA (Corrective and Preventive Action) reports and Cost vs. Progress analysis</li>
+                    <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                        <li>On-site auditing for safety, schedule, cost, and quality</li>
+                        <li>Verification of supply chain setup, procurement, logistics, and installation</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <hr class="border-gray-300" />
+        <hr class="border-gray-200" />
 
         <section id="value-delivered">
-            <h2 class="text-3xl sm:text-4xl section-title text-center mb-12">The Value of Independent Oversight</h2>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">Value Delivered</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="card p-6 text-center flex flex-col items-center">
-                    <span class="text-5xl mb-4 text-accent">🛡️</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Mitigate Risk</h3>
-                    <p class="text-gray-700">Identify issues early, prevent costly rework and unforeseen delays.</p>
+                    <span class="text-5xl mb-4">🛡️</span>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Reduce Risk</h3>
+                    <p class="text-gray-700">Identify issues early, prevent rework and costly changes</p>
                 </div>
                 <div class="card p-6 text-center flex flex-col items-center">
-                    <span class="text-5xl mb-4 text-accent">💰</span>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Optimize Costs</h3>
-                    <p class="text-gray-700">Structured oversight of design, procurement, and installation processes.</p>
+                    <span class="text-5xl mb-4">💰</span>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Save Costs</h3>
+                    <p class="text-gray-700">Structured oversight of design, procurement, installation through regular audits</p>
                 </div>
                 <div class="card p-6 text-center flex flex-col items-center">
-                    <span class="text-5xl mb-4 text-accent">✅</span>
+                    <span class="text-5xl mb-4">✅</span>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Ensure Compliance</h3>
-                    <p class="text-gray-700">Guaranteed adherence to the highest safety and quality standards.</p>
+                    <p class="text-gray-700">Guaranteed adherence to the most demanding safety and quality standards</p>
                 </div>
                 <div class="card p-6 text-center flex flex-col items-center">
-                    <span class="text-5xl mb-4 text-accent">🔒</span>
+                    <span class="text-5xl mb-4">🔒</span>
                     <h3 class="text-xl font-semibold text-gray-900 mb-2">Protect Investments</h3>
-                    <p class="text-gray-700">Independent validation builds confidence for all stakeholders.</p>
+                    <p class="text-gray-700">Independent validation builds confidence for owners, investors, and EPCM contractors</p>
                 </div>
             </div>
         </section>
 
-        <hr class="border-gray-300" />
+        <hr class="border-gray-200" />
 
         <section id="engagement-snapshot">
-            <h2 class="text-3xl sm:text-4xl section-title text-center mb-12">Project Impact & Experience</h2>
-            <div class="card p-8 max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">Engagement Snapshot</h2>
+            <div class="card p-8 max-w-3xl mx-auto">
                 <ul class="list-none text-xl text-gray-700 space-y-6">
                     <li class="flex items-start">
                         <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-                        <p>Audited <span class="font-bold text-gray-900">$10M to $5B+</span> semiconductor FAB projects, covering greenfield fabs, expansions, and retrofits.</p>
+                        <p>Independent audits of <span class="font-bold text-gray-900">$10M to $5B+</span> semiconductor FAB projects</p>
                     </li>
                     <li class="flex items-start">
                         <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-                        <p>Providing independent auditing and advisory services to <span class="font-bold text-gray-900">global clients</span> and multinational EPCM teams.</p>
+                        <p>Experience across <span class="font-bold text-gray-900">greenfield fabs, expansions, and retrofits</span>.</p>
                     </li>
                     <li class="flex items-start">
                         <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-                        <p>A trusted advisor focused on achieving the highest standards of safety, quality, and **schedule adherence**.</p>
+                        <p><span class="font-bold text-gray-900">Trusted advisor</span> to owners, investors, and EPCM teams</p>
                     </li>
                 </ul>
             </div>
         </section>
-        
+                
     </main>
 
-    <footer id="contact" class="bg-gradient-header text-white text-center p-12 mt-20">
+    <footer class="bg-gradient-header text-white text-center p-8 mt-16">
         <div class="container mx-auto px-4">
             <p class="text-lg sm:text-xl font-light mb-4">
                 Let's connect and ensure your next project is a resounding success!
+            </p>
+            <p class="text-xl sm:text-2xl font-semibold mb-2">
+                📍 Based in Singapore | 🌍 Supporting projects worldwide
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mt-6">
                 <a href="mailto:hkurzboeck@outlook.com" class="button-primary flex items-center">
@@ -215,5 +194,3 @@
 
 </body>
 </html>
-
-Would you like me to adjust the colors or content of the placeholder image?
