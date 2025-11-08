@@ -21,9 +21,7 @@
       color: #334155;
     }
 
-    .container {
-      max-width: 1200px;
-    }
+    .container { max-width: 1200px; }
 
     .section-title {
       color: #1e3a8a;
@@ -33,35 +31,19 @@
     .card {
       background-color: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: all 0.4s ease;
-      transform: translateY(0);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transform: scale(0.97);
+      opacity: 0;
+      transition: all 0.8s ease-out;
     }
 
-    .card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    .card.animate {
+      transform: scale(1);
+      opacity: 1;
     }
 
-    /* 🔹 Accent color */
-    .border-accent {
-      border-color: #1d4ed8;
-    }
-
-    .text-accent {
-      color: #1d4ed8;
-    }
-
-    /* 🔹 Professional blue gradient with hover transition */
-    .bg-gradient-header {
-      background: linear-gradient(to right, #1e3a8a, #1d4ed8);
-      color: white;
-      transition: background 0.6s ease;
-    }
-
-    .bg-gradient-header:hover {
-      background: linear-gradient(to right, #1e3a8a, #1e40af);
-    }
+    .border-accent { border-color: #2563eb; }
+    .text-accent { color: #2563eb; }
 
     .button-primary {
       background-color: #1d4ed8;
@@ -69,76 +51,83 @@
       padding: 12px 24px;
       border-radius: 8px;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: background-color 0.3s ease;
     }
 
-    .button-primary:hover {
-      background-color: #1e3a8a;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(30, 58, 138, 0.4);
-    }
+    .button-primary:hover { background-color: #1e40af; }
 
-    /* ✨ Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-fade-in-up {
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    .animate-fade-in-down {
-      animation: fadeInDown 1s ease forwards;
-    }
-
-    .fade-on-scroll {
+    /* Scroll animation */
+    .fade-zoom {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: scale(0.95) translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-zoom.animate {
+      opacity: 1;
+      transform: scale(1) translateY(0);
     }
 
-    .fade-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Hover zoom effect on card images */
+    .hover-zoom img {
+      transition: transform 0.5s ease;
+    }
+    .hover-zoom:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Mobile friendly adjustments */
+    @media (max-width: 768px) {
+      .card { margin-bottom: 1.5rem; }
+      .section-title { font-size: 1.75rem; }
+    }
+
+    /* Parallax header */
+    .parallax-header {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1669101283516-e608dcf142df?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      text-align: center;
+      padding: 16rem 1rem 12rem 1rem;
+      overflow: hidden;
+    }
+
+    .parallax-overlay {
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(15,23,42,0.6);
+      transition: transform 0.3s ease-out;
+    }
+
+    .parallax-content {
+      position: relative;
+      z-index: 10;
+      transition: transform 0.3s ease-out;
     }
   </style>
 </head>
 
 <body class="selection:bg-blue-200 selection:text-blue-800">
-  <!-- Header -->
-  <header class="bg-gradient-header py-16 text-center">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 animate-fade-in-down">
-      SEMI-CONSULTANT PTE. LTD.
-    </h1>
-    <p class="text-xl sm:text-2xl font-light opacity-90 animate-fade-in-up">
-      Your Trusted Partner for Independent Semiconductor Facility Audits & Consulting
-    </p>
+
+  <!-- Parallax Header -->
+  <header class="parallax-header fade-zoom">
+    <div class="parallax-overlay" id="parallaxOverlay"></div>
+    <div class="parallax-content" id="parallaxContent">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold">SEMI-CONSULTANT PTE. LTD.</h1>
+      <p class="text-xl sm:text-2xl font-light opacity-90 mt-4">
+        Your Trusted Partner for Independent Semiconductor Facility Audits & Consulting
+      </p>
+    </div>
   </header>
 
-  <!-- Main -->
   <main class="container mx-auto px-4 sm:px-6 lg:px-20 py-16 space-y-16">
+
     <!-- What We Do -->
-    <section id="what-we-do" class="text-center fade-on-scroll">
-      <h2 class="text-3xl sm:text-4xl section-title mb-8">What We Do</h2>
-      <div class="card p-8 max-w-3xl mx-auto">
+    <section id="who-we-are" class="text-center space-y-8 hover-zoom">
+      <h2 class="text-3xl sm:text-4xl section-title fade-zoom">What We Do</h2>
+      <div class="card p-8 max-w-3xl mx-auto fade-zoom">
         <p class="text-xl leading-relaxed">
           We provide independent oversight for semiconductor facility projects, ensuring they are delivered on time, on budget, and compliant with the world’s most demanding safety and quality standards.
         </p>
@@ -151,44 +140,55 @@
     <hr class="border-gray-200" />
 
     <!-- Core Competencies -->
-    <section id="core-competencies" class="fade-on-scroll">
-      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">
-        Our Expertise at a Glance
-      </h2>
-
+    <section id="core-competencies">
+      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10 fade-zoom">Our Expertise at a Glance</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="card p-6 border-l-4 border-accent">
+        <div class="card p-6 border-l-4 border-accent fade-zoom hover-zoom">
+          <img
+            src="https://images.unsplash.com/photo-1532186773960-85649e5cb70b?auto=format&fit=crop&w=800&q=80"
+            alt="Engineer conducting design audit"
+            class="rounded-lg mb-4 w-full h-48 object-cover"
+          />
           <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
             <span class="mr-3 text-accent">&#x2705;</span> Design Audits
           </h3>
           <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Structured feasibility and 30–60–90% design audits for early risk detection</li>
+            <li>Structured feasibility and design audits for early risk detection</li>
             <li>Compliance validation against SEMI, IBC, FM Global, and local codes</li>
-            <li>Review of layouts, system integration, and constructability</li>
-            <li>Construction audits with CAPA reports and cost vs progress analysis</li>
+            <li>Constructability and system integration reviews</li>
+            <li>Construction audits covering safety, quality, and schedule performance</li>
           </ul>
         </div>
 
-        <div class="card p-6 border-l-4 border-accent">
+        <div class="card p-6 border-l-4 border-accent fade-zoom hover-zoom">
+          <img
+            src="https://images.unsplash.com/photo-1614064642303-f3a0a7c14c36?auto=format&fit=crop&w=800&q=80"
+            alt="Semiconductor factory design"
+            class="rounded-lg mb-4 w-full h-48 object-cover"
+          />
           <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
             <span class="mr-3 text-accent">&#x1F4CB;</span> Feasibility & Design Auditing
           </h3>
           <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
-            <li>Site master planning</li>
-            <li>Comprehensive evaluation of site requirements</li>
-            <li>Optimization of logistics flows (people, goods, materials, vehicles)</li>
-            <li>Mechanical, electrical, CSA, process, controls, and life safety</li>
+            <li>Site master planning and evaluation of project feasibility</li>
+            <li>Optimization of logistics flows (people, goods, vehicles)</li>
+            <li>Mechanical, electrical, CSA, process, and life safety audits</li>
             <li>Cleanroom classification, temperature & humidity requirements</li>
           </ul>
         </div>
 
-        <div class="card p-6 border-l-4 border-accent">
+        <div class="card p-6 border-l-4 border-accent fade-zoom hover-zoom">
+          <img
+            src="https://images.unsplash.com/photo-1669101180145-812edbb23eb3?auto=format&fit=crop&w=800&q=80"
+            alt="Construction oversight at semiconductor fab"
+            class="rounded-lg mb-4 w-full h-48 object-cover"
+          />
           <h3 class="text-2xl font-semibold text-gray-900 mb-4 flex items-center">
             <span class="mr-3 text-accent">&#x1F527;</span> Construction Oversight & Project Control
           </h3>
           <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
             <li>On-site auditing for safety, schedule, cost, and quality</li>
-            <li>Verification of supply chain setup, procurement, logistics, and installation</li>
+            <li>Verification of supply chain setup, procurement, and installation</li>
           </ul>
         </div>
       </div>
@@ -197,34 +197,28 @@
     <hr class="border-gray-200" />
 
     <!-- Value Delivered -->
-    <section id="value-delivered" class="fade-on-scroll">
-      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">
-        Value Delivered
-      </h2>
-
+    <section id="value-delivered">
+      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10 fade-zoom">Value Delivered</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="card p-6 text-center flex flex-col items-center">
-          <span class="text-5xl mb-4 transform transition-transform duration-300 hover:scale-110">🛡️</span>
+        <div class="card p-6 text-center flex flex-col items-center fade-zoom hover-zoom">
+          <span class="text-5xl mb-4">🛡️</span>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Reduce Risk</h3>
           <p class="text-gray-700">Identify issues early, prevent rework and costly changes</p>
         </div>
-
-        <div class="card p-6 text-center flex flex-col items-center">
-          <span class="text-5xl mb-4 transform transition-transform duration-300 hover:scale-110">💰</span>
+        <div class="card p-6 text-center flex flex-col items-center fade-zoom hover-zoom">
+          <span class="text-5xl mb-4">💰</span>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Save Costs</h3>
-          <p class="text-gray-700">Structured oversight through regular audits</p>
+          <p class="text-gray-700">Structured oversight of design, procurement, installation through regular audits</p>
         </div>
-
-        <div class="card p-6 text-center flex flex-col items-center">
-          <span class="text-5xl mb-4 transform transition-transform duration-300 hover:scale-110">✅</span>
+        <div class="card p-6 text-center flex flex-col items-center fade-zoom hover-zoom">
+          <span class="text-5xl mb-4">✅</span>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Ensure Compliance</h3>
-          <p class="text-gray-700">Adherence to the most demanding safety and quality standards</p>
+          <p class="text-gray-700">Guaranteed adherence to the most demanding safety and quality standards</p>
         </div>
-
-        <div class="card p-6 text-center flex flex-col items-center">
-          <span class="text-5xl mb-4 transform transition-transform duration-300 hover:scale-110">🔒</span>
+        <div class="card p-6 text-center flex flex-col items-center fade-zoom hover-zoom">
+          <span class="text-5xl mb-4">🔒</span>
           <h3 class="text-xl font-semibold text-gray-900 mb-2">Protect Investments</h3>
-          <p class="text-gray-700">Independent validation builds confidence for stakeholders</p>
+          <p class="text-gray-700">Independent validation builds confidence for owners, investors, and EPCM contractors</p>
         </div>
       </div>
     </section>
@@ -232,20 +226,17 @@
     <hr class="border-gray-200" />
 
     <!-- Engagement Snapshot -->
-    <section id="engagement-snapshot" class="fade-on-scroll">
-      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10">
-        Engagement Snapshot
-      </h2>
-
-      <div class="card p-8 max-w-3xl mx-auto">
+    <section id="engagement-snapshot">
+      <h2 class="text-3xl sm:text-4xl section-title text-center mb-10 fade-zoom">Engagement Snapshot</h2>
+      <div class="card p-8 max-w-3xl mx-auto fade-zoom hover-zoom">
         <ul class="list-none text-xl text-gray-700 space-y-6">
           <li class="flex items-start">
             <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-            <p>Independent audits of <span class="font-bold text-gray-900">$10M–$5B+</span> semiconductor FAB projects</p>
+            <p>Independent audits of <span class="font-bold text-gray-900">$10M to $5B+</span> semiconductor FAB projects</p>
           </li>
           <li class="flex items-start">
             <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
-            <p>Experience across <span class="font-bold text-gray-900">greenfield fabs, expansions, and retrofits</span></p>
+            <p>Experience across <span class="font-bold text-gray-900">greenfield fabs, expansions, and retrofits</span>.</p>
           </li>
           <li class="flex items-start">
             <span class="text-accent mr-3 text-2xl mt-1">&#9733;</span>
@@ -254,10 +245,11 @@
         </ul>
       </div>
     </section>
+
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gradient-header text-white text-center p-8 mt-16">
+  <footer class="bg-gradient-header text-white text-center p-8 mt-16 fade-zoom">
     <div class="container mx-auto px-4">
       <p class="text-lg sm:text-xl font-light mb-4">
         Let's connect and ensure your next project is a resounding success!
@@ -265,7 +257,6 @@
       <p class="text-xl sm:text-2xl font-semibold mb-2">
         📍 Based in Singapore | 🌍 Supporting projects worldwide
       </p>
-
       <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mt-6">
         <a href="mailto:hkurzboeck@outlook.com" class="button-primary flex items-center">
           <span class="mr-2">&#x2709;&#xFE0F;</span> hkurzboeck@outlook.com
@@ -275,26 +266,38 @@
         </a>
       </div>
     </div>
-
-    <p class="mt-8 text-sm opacity-80">
-      &copy; 2024 SEMI-CONSULTANT PTE. LTD. All rights reserved.
-    </p>
+    <p class="mt-8 text-sm opacity-80">&copy; 2025 SEMI-CONSULTANT PTE. LTD. All rights reserved.</p>
   </footer>
 
-  <!-- Scroll Fade Script -->
+  <!-- Scroll animations + parallax -->
   <script>
-    const elements = document.querySelectorAll(".fade-on-scroll");
+    const elements = document.querySelectorAll(".fade-zoom");
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            const index = Array.from(elements).indexOf(entry.target);
+            entry.target.style.transitionDelay = `${index * 0.2}s`;
+            entry.target.classList.add("animate");
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
-    elements.forEach((el) => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
+
+    // Parallax header scroll effect
+    const header = document.querySelector(".parallax-header");
+    const overlay = document.getElementById("parallaxOverlay");
+    const content = document.getElementById("parallaxContent");
+
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      header.style.backgroundPositionY = `${scrollY * 0.5}px`;
+      overlay.style.transform = `translateY(${scrollY * 0.2}px)`;
+      content.style.transform = `translateY(${scrollY * 0.15}px)`;
+    });
   </script>
+
 </body>
 </html>
